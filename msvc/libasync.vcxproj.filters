@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\libasync\async.cpp" />
+    <ClCompile Include="..\src\libasync\cmd.cpp" />
+    <ClCompile Include="..\src\libasync\writer_thread.cpp" />
+    <ClCompile Include="..\src\libasync\writers.cpp" />
+    <ClCompile Include="..\src\libasync\utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\libasync\async.h" />
+    <ClInclude Include="..\src\libasync\cmd.h" />
+    <ClInclude Include="..\src\libasync\observer.h" />
+    <ClInclude Include="..\src\libasync\stdafx.h" />
+    <ClInclude Include="..\src\libasync\writer_thread.h" />
+    <ClInclude Include="..\src\libasync\writers.h" />
+    <ClInclude Include="..\src\libasync\utils.h" />
+  </ItemGroup>
+</Project>
