@@ -1,22 +1,34 @@
 #include "cmd.h"
 #include "writer_thread.h"
 #include "async.h"
+#include "server.h"
 //-----------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-    unsigned int bulk = 5;
+    if (argc != 3)
+    {
+        std::cout << "Invalid arguments! Example: bulk_server <tcp_port> <bulk_size>" << std::endl;
+        return EXIT_FAILURE;
+    }
 
-    async::handle_t h1 = async::connect(bulk);
-    async::handle_t h2 = async::connect(bulk);
+    unsigned int port = 0;
+    unsigned int bulk_size = 0;
 
-    async::receive(h1, "1", 1);
-    async::receive(h2, "1\n", 2);
-    async::receive(h1, "\n2\n3\n4\n5\n6\n{\na\n", 15);
-    async::receive(h1, "b\nc\nd\n}\n89\n", 11);
+    try
+    {
+        port = std::stoi(argv[1]);
+        bulk_size = std::stoi(argv[2]);
+    }
+    catch (std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
 
-    async::disconnect(h1);
-    async::disconnect(h2);
+    boost::asio::io_service ios;
+    Server s(ios, port, bulk_size);
+    ios.run();
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 //-----------------------------------------------------------------------------

@@ -1,14 +1,9 @@
 #pragma once
 //-----------------------------------------------------------------------------
-#include <cstddef>
+#include "session.h"
 //-----------------------------------------------------------------------------
-namespace async
+namespace network
 {
-    using handle_t = void*;
-
-    handle_t connect(unsigned int bulk);
-    void receive(handle_t handle, const char* data, size_t size);
-    void flush(handle_t handle);
-    void disconnect(handle_t handle);
+    std::string get_socket_address(std::shared_ptr<Session> s);
 }
 //-----------------------------------------------------------------------------

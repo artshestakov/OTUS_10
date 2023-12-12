@@ -115,6 +115,11 @@ void cmd::ReadConsole(const std::string& command)
     }
 }
 //-----------------------------------------------------------------------------
+void cmd::Flush()
+{
+    PrintAndClearVector();
+}
+//-----------------------------------------------------------------------------
 void cmd::AddCommand(const std::string& command)
 {
     if (!command.empty())

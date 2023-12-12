@@ -43,11 +43,21 @@ void async::receive(handle_t handle, const char* data, size_t size)
     AsyncHandle *h = static_cast<AsyncHandle*>(handle);
     if (!h)
     {
-        //Возможно имеет смысл бросить исключение...
         return;
     }
 
     h->CMD.ReadConsole(std::string(data, size));
+}
+//-----------------------------------------------------------------------------
+void async::flush(handle_t handle)
+{
+    AsyncHandle* h = static_cast<AsyncHandle*>(handle);
+    if (!h)
+    {
+        return;
+    }
+
+    h->CMD.Flush();
 }
 //-----------------------------------------------------------------------------
 void async::disconnect(handle_t handle)

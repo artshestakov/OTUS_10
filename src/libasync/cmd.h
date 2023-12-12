@@ -28,6 +28,8 @@ public:
 
     void ReadConsole(const std::string& command);
 
+    void Flush();
+
 private:
     //! Добавить команду в память
     //! \param command команда
